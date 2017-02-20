@@ -1,0 +1,26 @@
+<!--
+  Generated template for the MyPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="{{bcolor}}">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>{{categoryName}}</ion-title>
+        <ion-buttons end>
+            <button (click)="doRefresh()" ion-button icon-only>
+                <ion-icon name="refresh"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="card-background-page">
+    <ion-card *ngFor="let item of newsArticles" (click)="itemTapped(item)">
+        <img src="{{item.urlToImage}}" />
+        <div class="card-title">{{item.title}}</div>
+        <div class="card-subtitle">{{item.author}}</div>
+    </ion-card>
+</ion-content>
