@@ -3,13 +3,13 @@
         <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-        <ion-title>Page One</ion-title>
+        <ion-title>Bookmarks</ion-title>
     </ion-navbar>
 </ion-header>
 <ion-content class="card-background-page">
     <ion-card *ngFor="let item of bookmark" (click)="itemTapped(item)">
         <img src="{{item.urlToImage}}" />
         <div class="card-title">{{item.title}}</div>
-        <div class="card-subtitle">{{item.author}}</div>
+        <div class="card-subtitle">{{item.author}}</div>        
     </ion-card>
 </ion-content>

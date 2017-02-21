@@ -11,6 +11,9 @@
             <button (click)="getBookmark(article)" ion-button icon-only *ngIf="!bol">
                 <ion-icon name="bookmark"></ion-icon>
             </button>
+            <button (click)="removeItem(article.title)" ion-button icon-only *ngIf="bol">
+                <ion-icon name="bookmarks"></ion-icon>
+            </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { InAppBrowser } from 'ionic-native';
 import { Storage } from '@ionic/storage';
+import { Page1 } from '../../pages/page1/page1';
 import _ from "lodash";
 
 /*
@@ -23,7 +24,7 @@ export class SpecificPage {
     constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public alertCtrl: AlertController) {
         this.article = this.navParams.get('item');
         this.bcolor = this.navParams.get('bcolor');
-        this.category = this.navParams.get('categoryName');
+        this.category = this.navParams.get('categoryName'); 
         storage.get('bookmark').then((value) => {
             if (_.isEmpty(value)) {
                 this.bookmark = [];
@@ -33,7 +34,7 @@ export class SpecificPage {
             this.bol = _.find(this.bookmark, { title: this.article.title });
         })
     }
-
+    
     ionViewDidLoad() {
         console.log('ionViewDidLoad SpecificPagePage');
     }
@@ -55,4 +56,27 @@ export class SpecificPage {
         alert.present();
     }
 
+    removeItem(item) {
+        let newValue = _.filter(this.bookmark, (val) => {
+            return val.title != item;
+        });
+
+        let confirm = this.alertCtrl.create({
+            title: 'Use this lightsaber?',
+            message: 'Do you agree to use this lightsaber to do good across the intergalactic galaxy?',
+            buttons: [{
+                text: 'Disagree',
+                handler: () => {
+                    console.log('Disagree clicked');
+                }
+            }, {
+                text: 'Agree',
+                handler: () => {
+                    this.storage.set('bookmark', newValue);
+                    console.log('Agree clicked');
+                }
+            }]
+        });
+        confirm.present();
+    }
 }

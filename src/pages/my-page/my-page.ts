@@ -24,7 +24,6 @@ export class MyPage {
         this.newsSource = [];
         this.newsId = this.navParams.get('id');
         this.categoryName = this.navParams.get('category');
-        console.log(this.categoryName);
         this.newsArticles = [];
         this.bcolor = this.navParams.get('bcolor');
 
